@@ -1,0 +1,19 @@
+{
+  "name": "e-commerce",
+  "version": "1.0.0",
+  "description": "MERN e-commerce app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndresXI/ecommerce-app.git"
+  },
+  "author": "Andres Alcocer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AndresXI/ecommerce-app/issues"
+  },
+  "homepage": "https://github.com/AndresXI/ecommerce-app#readme"
+}
