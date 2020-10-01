@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AndresXI/ecommerce-app/issues"
   },
-  "homepage": "https://github.com/AndresXI/ecommerce-app#readme"
+  "homepage": "https://github.com/AndresXI/ecommerce-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
