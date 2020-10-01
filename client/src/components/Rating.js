@@ -48,7 +48,7 @@ const Rating = ({ value, text, color }) => {
   )
 }
 
-// Set rating stars to yellow as default
+// Set the star rating color to yellow as default
 Rating.defaultProps = {
   color: "#f8e825"
 }
