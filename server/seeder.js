@@ -19,7 +19,7 @@ const importData = async () => {
     await Product.deleteMany()
     await User.deleteMany()
 
-    const createdUsers = await User.insertMany(user)
+    const createdUsers = await User.insertMany(users)
 
     // get admin user from User sample data
     const adminUser = createdUsers[0]._id
@@ -53,7 +53,7 @@ const destroyData = async () => {
   }
 }
 
-if (process.argv(2) === '-d') {
+if (process.argv[2] === '-d') {
   destroyData()
 } else {
   importData()
