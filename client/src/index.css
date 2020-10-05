@@ -9,3 +9,8 @@ main {
 .product__price {
   padding: 1rem 0;
 }
+
+h1 {
+  font-size: 1.4rem;
+  padding: 0.1rem;
+}
