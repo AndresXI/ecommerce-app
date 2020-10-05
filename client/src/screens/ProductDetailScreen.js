@@ -8,7 +8,7 @@ import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ match, history }) => {
   const [quantity, setQuantity] = useState(0)
   const productId = match.params.id
   const dispatch = useDispatch()
@@ -19,6 +19,9 @@ const ProductScreen = ({ match }) => {
     dispatch(listProductDetails(productId))
   }, [dispatch])
 
+  const addToCartHandler = () => {
+    history.push(`/cart/${productId}?qty=${quantity}`)
+  }
 
   return (
     <>
@@ -103,6 +106,7 @@ const ProductScreen = ({ match }) => {
                     }
                     <ListGroup.Item>
                       <Button
+                        onClick={addToCartHandler}
                         disabled={product.countInStock === 0}
                         className="btn-block"
                         type="button"
