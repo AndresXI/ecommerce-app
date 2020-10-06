@@ -21,10 +21,9 @@ const importData = async () => {
 
     const createdUsers = await User.insertMany(users)
 
-    // get admin user from User sample data
+    // get admin user from User sample data 
     const adminUser = createdUsers[0]._id
 
-    // add adminUser to all products
     const sampleProducts = products.map(product => {
       return { ...product, user: adminUser }
     })
