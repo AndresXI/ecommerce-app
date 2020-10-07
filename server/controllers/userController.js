@@ -21,6 +21,39 @@ const authUser = asyncHandler(async (req, res) => {
   })
 })
 
+const registerUser = asyncHandler(async (req, res) => {
+  const { email, password, name } = req.body
+
+  if (!(email, password)) {
+    res.status(400)
+    throw new Error('You must enter an email and password')
+  }
+
+  const userExists = await User.findOne({ email })
+  if (userExists) {
+    res.status(400)
+    throw new Error('User already exists')
+  }
+
+  const user = await User.create({
+    name,
+    email,
+    password
+  })
+  if (!user) {
+    res.status(404)
+    throw new Error('User not found')
+  }
+
+  res.status(201).json({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    isAdmin: user.isAdmin,
+    token: generateToken(user._id)
+  })
+})
+
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
   if (!user) {
@@ -38,5 +71,6 @@ const getUserProfile = asyncHandler(async (req, res) => {
 
 export {
   authUser,
-  getUserProfile
+  getUserProfile,
+  registerUser
 }
