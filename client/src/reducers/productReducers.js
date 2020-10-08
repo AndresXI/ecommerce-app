@@ -12,19 +12,19 @@ export const productListReducer = (state = { products: [] }, action) => {
     case PRODUCT_LIST_REQUEST:
       return {
         loading: true,
-        products: []
+        products: [],
       }
 
     case PRODUCT_LIST_SUCCESS:
       return {
         loading: false,
-        products: action.payload
+        products: action.payload,
       }
 
     case PRODUCT_LIST_FAIL:
       return {
         loading: false,
-        error: action.payload
+        error: action.payload,
       }
 
     default:
@@ -32,24 +32,27 @@ export const productListReducer = (state = { products: [] }, action) => {
   }
 }
 
-export const productDetailsReducer = (state = { product: { reviews: [] } }, action) => {
+export const productDetailsReducer = (
+  state = { product: { reviews: [] } },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return {
         loading: true,
-        ...state
+        ...state,
       }
 
     case PRODUCT_DETAILS_SUCCESS:
       return {
         loading: false,
-        product: action.payload
+        product: action.payload,
       }
 
     case PRODUCT_DETAILS_FAIL:
       return {
         loading: false,
-        error: action.payload
+        error: action.payload,
       }
 
     default:
