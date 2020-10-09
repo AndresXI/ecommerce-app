@@ -17,7 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
-    token: generateToken(user._id)
+    token: generateToken(user._id),
   })
 })
 
@@ -38,7 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     email,
-    password
+    password,
   })
   if (!user) {
     res.status(404)
@@ -50,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name: user.name,
     email: user.email,
     isAdmin: user.isAdmin,
-    token: generateToken(user._id)
+    token: generateToken(user._id),
   })
 })
 
@@ -69,8 +69,24 @@ const getUserProfile = asyncHandler(async (req, res) => {
   })
 })
 
-export {
-  authUser,
-  getUserProfile,
-  registerUser
-}
+const updateUserProfile = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id)
+  if (!user) {
+    res.status(404)
+    throw new Error('User not found')
+  }
+
+  user.name = req.body.name || user.name
+  user.email = req.body.email || user.email
+  if (req.body.password) user.password = req.body.password
+  const updatedUser = await user.save()
+
+  res.json({
+    _id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    isAdmin: updatedUser.isAdmin,
+  })
+})
+
+export { authUser, getUserProfile, registerUser, updateUserProfile }
