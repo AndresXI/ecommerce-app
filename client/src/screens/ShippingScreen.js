@@ -2,10 +2,7 @@ import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
-import Message from '../components/Message'
 import CheckoutSteps from '../components/CheckoutSteps'
-import Loader from '../components/Loader'
-import { register } from '../actions/userActions'
 import { saveShippingAddress } from '../actions/cartActions'
 import FormContainer from '../components/FormContainer'
 
