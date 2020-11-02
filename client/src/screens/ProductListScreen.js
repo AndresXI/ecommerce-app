@@ -27,7 +27,7 @@ const ProductListScreen = ({ history, match }) => {
     // delete products
   }
 
-  const createProductHandler = () => {
+  const createProductHandler = (product) => {
     console.log('crate product hancler')
   }
 
