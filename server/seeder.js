@@ -5,6 +5,7 @@ import User from './models/userModel.js'
 import Product from './models/productModel.js'
 import Order from './models/orderModel.js'
 import connectDB from './config/db.js'
+import colors from 'colors'
 
 dotenv.config()
 
@@ -19,10 +20,10 @@ const importData = async () => {
 
     const createdUsers = await User.insertMany(users)
 
-    // get admin user from User sample data 
+    // get admin user from User sample data
     const adminUser = createdUsers[0]._id
 
-    const sampleProducts = products.map(product => {
+    const sampleProducts = products.map((product) => {
       return { ...product, user: adminUser }
     })
 
