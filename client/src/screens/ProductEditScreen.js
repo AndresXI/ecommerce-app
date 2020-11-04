@@ -58,8 +58,6 @@ const ProductEditScreen = ({ match, history }) => {
     const formData = new FormData()
     formData.append('image', file)
     setUploading(true)
-    console.log('fiel', file)
-    console.log('form data', formData)
 
     try {
       const config = {
@@ -68,8 +66,6 @@ const ProductEditScreen = ({ match, history }) => {
         },
       }
       const { data } = await axios.post('/api/upload', formData, config)
-      console.log('image', data)
-      console.log('image', formData)
       setImage(data)
       setUploading(false)
     } catch (error) {
