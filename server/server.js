@@ -11,14 +11,11 @@ import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
 dotenv.config()
+
 // connect to database (mongoDB instance)
 connectDB()
 const app = express()
 app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.send('API is running!')
-})
 
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
@@ -30,7 +27,7 @@ app.get('/api/config/paypal', (req, res) =>
 )
 
 const __dirname = path.resolve()
-app.use('/upload', express.static(path.join(__dirname, '/uploads')))
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use(notFound)
 app.use(errorHandler)
